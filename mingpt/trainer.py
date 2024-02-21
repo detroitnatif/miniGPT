@@ -20,8 +20,8 @@ class Trainer:
         # dataloder parameters
         C.num_workers = 4
         # optimizer parameters
-        C.max_iters = None
-        C.batch_size = 64
+        C.max_iters = 200
+        C.batch_size = 4
         C.learning_rate = 3e-4
         C.betas = (0.9, 0.95)
         C.weight_decay = 0.1 # only applied on matmul weights
@@ -41,10 +41,10 @@ class Trainer:
         else:
             self.device = config.device
         self.model = self.model.to(self.device)
-        print("running on device", self.device)
+        # print("running on device", self.device)
 
         # variables that will be assigned to trainer class later for logging and etc
-        self.iter_num = 0
+        self.iter_num = 0.0
         self.iter_time = 0.0
         self.iter_dt = 0.0
 

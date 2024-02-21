@@ -150,7 +150,10 @@ if __name__ == '__main__':
         mistakes_printed_already = 0
         factors = torch.tensor([[10**i for i in range(ndigit+1)][::-1]]).to(trainer.device)
         loader = DataLoader(dataset, batch_size=100, num_workers=0, drop_last=False)
+
         for b, (x, y) in enumerate(loader):
+            print(b)
+            print(x, y)
             x = x.to(trainer.device)
             # isolate the first two digits of the input sequence alone
             d1d2 = x[:, :ndigit*2]
@@ -205,4 +208,6 @@ if __name__ == '__main__':
     trainer.set_callback('on_batch_end', batch_end_callback)
 
     # run the optimization
-    trainer.run()
+trainer.run()
+
+  
